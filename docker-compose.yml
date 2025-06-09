@@ -1,0 +1,24 @@
+name: spark-web
+
+services:
+  api1:
+    build: 
+      context: ./backend
+      dockerfile: DockerFile
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+
+  api2: 
+    build: 
+      context: ./
+      dockerfile: DockerFile
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+      - 3001:3001
+      
+  # web:
+  #   image: nginx:latest
+  #   ports:
+  #     - "80:80"
